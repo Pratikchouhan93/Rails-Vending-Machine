@@ -1,0 +1,46 @@
+# PostgreSQL. Versions 9.3 and up are supported.
+#
+# Install the pg driver:
+#   gem install pg
+# On macOS with Homebrew:
+#   gem install pg -- --with-pg-config=/usr/local/bin/pg_config
+# On macOS with MacPorts:
+#   gem install pg -- --with-pg-config=/opt/local/lib/postgresql84/bin/pg_config
+# On Windows: 
+#   gem install pg
+#       Choose the win32 build.
+#       Install PostgreSQL and put its /bin directory on your path.
+#
+# Configure Using Gemfile
+# gem "pg"
+#
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 25
+  port: 5432
+
+# development:
+#   <<: *default
+#   database: vending_machine_development
+
+#   username: 'pratik'
+#   password: 'rails'
+#   host: localhost
+
+development:
+  <<: *default
+  host: localhost
+  username: pratik
+  password: 12345
+  database: vending_machine_dev
+
+test:
+  <<: *default
+  database: vending_machine_test
+
+production:
+  <<: *default
+  database: vending_machine_production
+  username: vending_machine
+  password: <%= ENV["VENDING_MACHINE_DATABASE_PASSWORD"] %> 
