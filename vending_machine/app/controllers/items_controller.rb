@@ -2,19 +2,19 @@
 class ItemsController < ApplicationController
 
   def index
-    @item = Items.all
+    @items = Item.all
   end
 
   def show
-    @item = Items.find(params[:id])
+    @item = Item.find(params[:id])
   end
 
   def new
-    @item = Items.new
+    @item = Item.new
   end
 
   # def create
-  #   @item = Items.new(item_params)
+  #   @item = Item.new(item_params)
 
   #   if @item.save
   #     redirect_to @item
@@ -24,11 +24,11 @@ class ItemsController < ApplicationController
   # end
 
   def edit
-    @items = Items.find(params[:id])
+    @item = Item.find(params[:id])
   end
 
   # def update
-  #   @item = Items.find(params[:id])
+  #   @item = Item.find(params[:id])
 
   #   if @item.update(article_params)
   #     redirect_to @item
@@ -38,7 +38,7 @@ class ItemsController < ApplicationController
   # end
 
   def destroy
-    @item = Items.find(params[:id])
+    @item = Item.find(params[:id])
     @item.destroy
 
     redirect_to root_path, status: :see_other
