@@ -44,3 +44,4 @@ production:
   database: vending_machine_production
   username: vending_machine
   password: <%= ENV["VENDING_MACHINE_DATABASE_PASSWORD"] %> 
+  

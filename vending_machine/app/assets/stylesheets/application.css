@@ -79,3 +79,23 @@ body {
      height: 30px;
      width: 350px;
 }
+
+.center {
+  text-align: center; 
+}
+
+.border {
+  border: 1px solid black;
+  border-radius: 20px;
+  box-shadow: 8px 8px;
+  margin-top: 130px;
+  margin-left: 450px;
+  margin-right: 450px;
+  padding-top: 5px;
+  padding-bottom: 20px;
+}
+
+.title {
+  margin-left: 10px;
+  color: black;
+}
