@@ -10,32 +10,12 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.new
+    @item = Items.new
   end
-
-  # def create
-  #   @item = Item.new(item_params)
-
-  #   if @item.save
-  #     redirect_to @item
-  #   else
-  #     render :new, status: :unprocessable_entity
-  #   end
-  # end
 
   def edit
     @item = Item.find(params[:id])
   end
-
-  # def update
-  #   @item = Item.find(params[:id])
-
-  #   if @item.update(article_params)
-  #     redirect_to @item
-  #   else
-  #     render :edit, status: :unprocessable_entity
-  #   end
-  # end
 
   def destroy
     @item = Item.find(params[:id])
