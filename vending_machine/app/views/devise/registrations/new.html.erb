@@ -4,40 +4,41 @@
     <h1 class="center">Sign up</h1>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <center>
-        <div style="margin-bottom: 10px">
-          <%= render "devise/shared/error_messages", resource: resource %>
+    <center>
+      <div style="margin-bottom: 10px">
+        <%= render "devise/shared/error_messages", resource: resource %>
 
-          <div class="field">
-            <!-- <%= f.label :email %><br /> -->
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email" %>
-          </div>
-
-          <div class="field" style="margin-top: 10px">
-            <!-- <%= f.label :password %> -->
-            <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password" %>
-          </div>
-
-          <div class="field" style="margin-top: 10px">
-            <!-- <%= f.label :password_confirmation %><br /> -->
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm-Password" %><br />
-
-            <% if @minimum_password_length %>
-            <small style="margin-left: 40px">(<%= @minimum_password_length %> characters minimum)</small>
-            <% end %>
-          </div>
-          <input type="radio" id="user_id" name="user" value="Admin">
-          <label for="admin">Admin</label>
-          <input type="radio" id="user_id" name="user" value="Customer">
-          <label for="customer">Customer</label>
-
-          <div class="actions" style="margin-top: 15px">
-            <%= f.submit "Sign up" %>
-          </div>
+        <div class="field">
+          <!-- <%= f.label :email %><br /> -->
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email" %>
         </div>
+
+        <div class="field" style="margin-top: 10px">
+          <!-- <%= f.label :password %> -->
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password" %>
+        </div>
+
+        <div class="field" style="margin-top: 10px">
+          <!-- <%= f.label :password_confirmation %><br /> -->
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm-Password" %><br>
+
+          <% if @minimum_password_length %>
+          <small style="margin-left: 40px">(<%= @minimum_password_length %> characters minimum)</small>
+          <% end %>
+        </div> 
+
+        <div class="field">
+          <%= f.radio_button :role, 'admin', :checked => true %> Admin
+          <%= f.radio_button :role, 'customer' %> Customer
+        </div>
+
+        <div class="actions" style="margin-top: 15px">
+          <%= f.submit "Sign up" %>
+        </div>
+      </div>
     </center>
     <% end %>
 
     <%= render "devise/shared/links" %>
-    </div>
+  </div>
 </body>
