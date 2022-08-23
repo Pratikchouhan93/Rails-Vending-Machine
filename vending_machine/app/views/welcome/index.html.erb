@@ -1,8 +1,6 @@
-<% if admin_signed_in? %>
- <p>Get ready to offer your services</p>
- <%= link_to 'Log out', '/users/sign_out', method: :delete %>
-<% elsif customer_signed_in? %>
- <p>What kind of service do you want?</p>
- <%= link_to 'Log out', '/customers/sign_out', method: :delete %>
-<!--  <#%= link_to 'Log out', destroy_customer_session_path, method: :delete %> -->
+<% if current_user.admin? %>
+  <p>Get ready to offer your services......admin</p>
+<% elsif current_user.customer? %>
+  <p>What kind of service do you want?......customer</p>
 <% end %>
+<%= link_to 'Log out', destroy_user_session_path, method: :delete %>
