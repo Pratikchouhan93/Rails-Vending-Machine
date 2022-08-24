@@ -1,18 +1,41 @@
 Rails.application.routes.draw do
-  # root 'welcome#index'
-  # get 'welcome/index'
-  devise_for :users
+
+  root "welcome#index"
+
+  # devise_for :users
   devise_for :admins
-  devise_for :customers
+  # devise_for :customers
 
   devise_scope :user do  
      get '/users/sign_out' => 'devise/sessions#destroy'     
      get '/customers/sign_out' => 'devise/sessions#destroy'     
   end
-  get 'users/index'
-  root "welcome#index"
 
-  # get 'items/index'
-  # resources :items
-  get "/items", to: "items#index"
+  # namespace :test do
+  #   resources :items
+  # end
+
+  # scope path: 'path', module: 'module', as: 'as' do
+  #   resources :test
+  # end
+
+  # resources :homes do
+  #   get :post, on: :collection
+  # end
+
+  resources :homes do
+    collection do
+      get :post
+      post :comment
+    end
+  end
+
+  # resources :homes do
+  #   get :post, on: :member
+  #   post :comment, on: :member
+  # end
+
+  # get  '/dashboard', to: 'dashboard#show'
+  resources :users
+  resources :items
 end
