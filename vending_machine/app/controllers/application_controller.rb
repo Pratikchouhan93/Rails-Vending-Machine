@@ -11,4 +11,11 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:role, :email, :password)}
   end
+
+  private
+
+  def role_template
+    user_role = current_user.has_role? :admin ? 'admin' : 'customer'
+    "#{user_role}_#{action_name}" 
+  end
 end
