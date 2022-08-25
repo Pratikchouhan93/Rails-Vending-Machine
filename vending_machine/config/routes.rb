@@ -2,13 +2,13 @@ Rails.application.routes.draw do
 
   root "welcome#index"
 
-  # devise_for :users
-  devise_for :admins
+  devise_for :users
+  # devise_for :admins
   # devise_for :customers
 
   devise_scope :user do  
      get '/users/sign_out' => 'devise/sessions#destroy'     
-     get '/customers/sign_out' => 'devise/sessions#destroy'     
+     get '/users/sign_out' => 'devise/sessions#destroy'     
   end
 
   # namespace :test do
@@ -23,12 +23,12 @@ Rails.application.routes.draw do
   #   get :post, on: :collection
   # end
 
-  resources :homes do
-    collection do
-      get :post
-      post :comment
-    end
-  end
+  # resources :homes do
+  #   collection do
+  #     get :post
+  #     post :comment
+  #   end
+  # end
 
   # resources :homes do
   #   get :post, on: :member
