@@ -1,6 +1,6 @@
-<% if current_user.admin? %>
+<!-- <#% if current_user.admin? %> -->
   <p>Get ready to offer your services......admin</p>
-<% elsif current_user.customer? %>
+<!-- <#% elsif current_user.customer? %> -->
   <p>What kind of service do you want?......customer</p>
-<% end %>
+<!-- <#% end %> -->
 <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
