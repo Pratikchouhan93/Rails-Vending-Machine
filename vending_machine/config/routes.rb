@@ -1,15 +1,16 @@
 Rails.application.routes.draw do
 
-  root "welcome#index"
-
+  root "items#index"
+  
   devise_for :users
-  # devise_for :admins
-  # devise_for :customers
 
   devise_scope :user do  
      get '/users/sign_out' => 'devise/sessions#destroy'     
-     get '/users/sign_out' => 'devise/sessions#destroy'     
   end
+
+  resources :users
+  resources :items, as: 'items'
+end
 
   # namespace :test do
   #   resources :items
@@ -36,6 +37,3 @@ Rails.application.routes.draw do
   # end
 
   # get  '/dashboard', to: 'dashboard#show'
-  resources :users
-  resources :items
-end
