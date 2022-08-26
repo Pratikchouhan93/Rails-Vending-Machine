@@ -1,8 +1,7 @@
 <div class="topnav">
   <a href="#home">Home</a>
-  <a href="#profile">Profile</a>
+  <%= link_to "Profile", user_path(current_user) %>
 
-  <!-- <a style="float: right; margin-right: 20px" href="#login">Login</a> -->
   <a style="float: right; margin-right: 20px" href="#login">Login</a>
   <div class="search-container">
      <form>  <!--action="action_page.php" -->
@@ -14,6 +13,12 @@
   'navbar-link'  %>
 </div>
 
-
-<h1>Hello, User!</h1>
-<p>Welcome to the Vending Machine.</p>
+<div>
+  <ul>
+      <% @items.each do |item| %>
+        <li>
+          <%= link_to item.name, item_path(item) %>
+        </li>
+      <% end %>
+  </ul>
+</div>
