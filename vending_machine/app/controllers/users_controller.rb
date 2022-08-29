@@ -1,4 +1,6 @@
+# app/controllers/users_controller.rb
 class UsersController < ApplicationController
+  # load_and_authorize_resource
 
   def index
     @users = User.all
@@ -6,6 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    # authorize! :read, @user
   end
 
   def new
@@ -44,7 +47,8 @@ class UsersController < ApplicationController
   end
 
   private
-    def user_params
-      params.require(:user).permit(:name, :mobile)
-    end
+
+  def user_params
+    params.require(:user).permit(:name, :mobile)
+  end
 end
