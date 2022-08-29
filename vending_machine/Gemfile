@@ -56,6 +56,8 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  # code formatter "Rubocop"
+  gem 'rubocop' 
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
@@ -71,6 +73,12 @@ group :test do
   gem "webdrivers"
 end
 
-  #Devise gem 
+  # Devise gem 
   gem 'devise'
+
+  # Cancancan Gem for Simple authorization
+  gem 'cancancan', '~> 1.10'
+
+  # debugger console
+  gem 'byebug'
   

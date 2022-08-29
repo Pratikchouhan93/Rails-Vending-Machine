@@ -2,7 +2,7 @@
 <p><%= @user.email %></p>
 
 <ul>
-  <li><%= button_to "Edit your Account", edit_user_path(@user) %></li><br>
+  <li><%= link_to "Edit your Account", edit_user_path(@user) %></li><br>
   <li><%= button_to "Delete your account", user_path(@user), :method => :delete, data: {
                     turbo_confirm: "Are you sure?"
                   } %></li> 
