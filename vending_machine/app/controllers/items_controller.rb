@@ -1,8 +1,10 @@
 # app/controllers/items_controller.rb
 
 class ItemsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def index
-    @items = Item.all
+    @items = Item.order(price: :asc,quantity: :asc)
   end
 
   def show
@@ -13,8 +15,25 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
+  def create
+    @user = User.find(current_user.id)
+    @item = @user.items.create(item_params)
+
+    redirect_to user_path(@user)
+  end
+
   def edit
     @item = Item.find(params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:id])
+
+    if @item.update(item_params)
+      redirect_to @item
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -22,6 +41,12 @@ class ItemsController < ApplicationController
     @item.destroy
 
     redirect_to root_path, status: :see_other
+  end
+
+  private
+
+  def item_params
+    params.require(:item).permit(:name, :price, :quantity)
   end
 
 end

@@ -3,9 +3,7 @@ class Item < ApplicationRecord
   belongs_to :user
   # self.locking_column = :name
 
-  validates :name, presence: true, length: { minimum: 3 }
-  validates :price, presence: true
-  validates :quantity, presence: true
+  validates :name, :price, :quantity, presence: true
 
   # after_initialize :normalize_name
   # after_find :normalize_names

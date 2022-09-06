@@ -4,25 +4,42 @@
   <% if current_user.admin? %>
     <%= link_to "Add Item", new_item_path(current_user) %>
   <% end %>
-  <%= link_to "Profile", user_path(current_user) %>
 
-  <a style="float: right; margin-right: 20px" href="#login">Login</a>
+  <div style="float: right; margin-right: 20px"> 
+    <%= link_to current_user.name, user_path(current_user) %>
+    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 
+    'navbar-link' %>
+  </div>
+
   <div class="search-container">
-     <form>  <!--action="action_page.php" -->
+    <form>
       <input class="searchbar" type="text" placeholder="Search" name="search">
       <button style="width: 30px; height: 30px " type="submit"><i class="fa fa-search"></i></button>
     </form>
   </div>
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 
-  'navbar-link'  %>
 </div>
 
 <div>
-  <ul>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <% if current_user.admin? %>
+        <th>Edit</th>
+        <th>Delete</th>
+      <% end %>
+    </tr>
+
     <% @items.each do |item| %>
-      <li>
-        <%= link_to item.name, item_path(item) %>
-      </li>
+      <tr>
+        <td><%= link_to item.name, item_path(item) %></td>
+        <td><%= item.price %></td>
+        <td><%= item.quantity %></td>
+        <% if current_user.admin? %>
+          <td><%= button_to (image_tag ("edit.png"), height: 20), edit_item_path(item), method: :get %></td>
+          <td><%= button_to (image_tag ("delete.png"), height: 20), item_path(item), method: :delete, data: {confirm: "Are you sure want delete this item?"} %></td>
+        <% end %>
     <% end %>
-  </ul>
+  </table>
 </div>
