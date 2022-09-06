@@ -1,15 +1,8 @@
+<p style="margin-left: 40px"><%= @item.name %></p>
 
-<h1><%= @item.name %></h1>
-
-<table >
-  <tr>
-    <th>Price</th>
-    <th>Quantity</th>
-  </tr>
-  <tr>
-    <td><%= @item.price %></td>
-    <td><%= @item.quantity %></td>
-  </tr>
-  <tr>
-</table>
-
+<ul>
+  <li><%= button_to "Edit Item", edit_item_path(@item), :method => :get %></li><br>
+  <li><%= button_to "Delete Item", item_path(@item), :method => :delete, data: {
+                    turbo_confirm: "Are you sure?"
+                  } %></li> 
+</ul>

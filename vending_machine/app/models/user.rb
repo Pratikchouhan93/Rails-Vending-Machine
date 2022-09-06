@@ -2,7 +2,6 @@
 
 class User < ApplicationRecord
   has_many :items, dependent: :destroy
-  self.inheritance_column = 'kind_of_user'
   # enum :role, [ :admin, :customer ]
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
