@@ -1,0 +1,24 @@
+
+<div class="topnav">
+  <%= link_to "Home", root_path %>
+
+  <% unless root_path? %>
+    <%= link_to "Back", :back %>
+  <% end %>
+
+  <div style="float: right; margin-right: 20px"> 
+    <%= link_to current_user.name, user_path(current_user) %>
+    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 
+    'navbar-link' %>
+  </div>
+
+  <% if root_path? %>
+    <%= link_to "Add Item", new_item_path(current_user) if current_user.admin? %>
+    <div class="search-container">
+      <form>
+        <input class="searchbar" type="text" placeholder="Search" name="search">
+        <button style="width: 30px; height: 30px " type="submit"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+  <% end %>
+</div>
