@@ -1,8 +1,10 @@
 # app/controllers/items_controller.rb
 
 class ItemsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def index
-    @items = Item.all
+    @items = Item.order(price: :asc,quantity: :asc)
   end
 
   def show
@@ -12,9 +14,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
   end
-
-<<<<<<< Updated upstream
-=======
+  
   def create
     @user = User.find(current_user.id)
     @item = @user.items.create(item_params)
@@ -22,13 +22,11 @@ class ItemsController < ApplicationController
     redirect_to root_path, notice: "#{@item.name} Added Successfully."
   end
 
->>>>>>> Stashed changes
+
   def edit
     @item = Item.find(params[:id])
   end
 
-<<<<<<< Updated upstream
-=======
   def update
     @item = Item.find(params[:id])
 
@@ -39,12 +37,17 @@ class ItemsController < ApplicationController
     end
   end
 
->>>>>>> Stashed changes
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
 
     redirect_to root_path, status: :see_other
+  end
+
+  private
+
+  def item_params
+    params.require(:item).permit(:name, :price, :quantity)
   end
 
 end

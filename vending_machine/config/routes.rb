@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :users
-  resources :items, as: 'items'
+  resources :items
 end
 
   # namespace :test do
