@@ -1,3 +1,4 @@
+
 <div class="topnav">
   <a href="#home">Home</a>
 
@@ -31,15 +32,42 @@
       <% end %>
     </tr>
 
+<!-- index of items -->
+
+<div>
+  <table>
+    <tr>
+      <th>Code</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <% if current_user.admin? %>
+        <th>Edit</th>
+        <th>Delete</th>
+      <% end %>
+    </tr>
+
     <% @items.each do |item| %>
+      <tr>
+        <td><%= item.id %></td>
+        <td><%= item.name %></td>
+        <td><%= item.price %></td>
+        <td><%= item.quantity %></td>
+
       <tr>
         <td><%= link_to item.name, item_path(item) %></td>
         <td><%= item.price %></td>
         <td><%= item.quantity %></td>
-        <% if current_user.admin? %>
-          <td><%= button_to (image_tag ("edit.png"), height: 20), edit_item_path(item), method: :get %></td>
-          <td><%= button_to (image_tag ("delete.png"), height: 20), item_path(item), method: :delete, data: {confirm: "Are you sure want delete this item?"} %></td>
-        <% end %>
+
+
+        <td>
+          <table>
+            <th>-</th>
+            <th>0</th>
+            <th>+</th>
+          </table>
+        </td>
+
     <% end %>
   </table>
 </div>

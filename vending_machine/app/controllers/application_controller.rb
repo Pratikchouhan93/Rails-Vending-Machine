@@ -11,9 +11,9 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(user)
     if user.type == 'Admin'
-      items_path
+      root_path
     else
-      items_path
+      root_path
     end
   end
 end
