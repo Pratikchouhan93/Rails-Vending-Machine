@@ -13,12 +13,17 @@
   </div>
 
   <% if root_path? %>
-    <%= link_to "Add Item", new_item_path(current_user) if current_user.admin? %>
+    <%= link_to "Add i`tem", new_item_path(current_user) if current_user.admin? %>
     <div class="search-container">
       <form>
         <input class="searchbar" type="text" placeholder="Search" name="search">
         <button style="width: 30px; height: 30px " type="submit"><i class="fa fa-search"></i></button>
       </form>
     </div>
+
+    <% if current_user.customer? %>
+      <%= link_to "Remove Item", new_cart_path %>
+      <%= link_to "Cart", carts_path %>
+    <% end %>
   <% end %>
 </div>

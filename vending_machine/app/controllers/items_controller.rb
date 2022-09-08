@@ -22,7 +22,6 @@ class ItemsController < ApplicationController
     redirect_to root_path, notice: "#{@item.name} Added Successfully."
   end
 
-
   def edit
     @item = Item.find(params[:id])
   end
@@ -30,7 +29,7 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
 
-    if @item.update!(item_params)
+    if @item.update(item_params)
       redirect_to root_path, notice: "#{@item.name} Updated Successfully."
     else
       render :edit, status: :unprocessable_entity
