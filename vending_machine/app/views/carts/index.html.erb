@@ -1,0 +1,27 @@
+<!-- index of carts -->
+
+<div>
+  <table>
+    <tr>
+      <th>Code</th>
+      <th>Name</th>
+      <!-- <th>Price</th> -->
+      <th>Quantity</th>
+      <th>Total</th>
+    </tr>
+
+    <% @cart_items.each do |item| %>
+      <tr>
+        <td><%= item.id %></td>
+        <td><%= item.name %></td>
+        <!-- <td><%= item.price %></td> -->
+        <td><%= Cart.find_by_item_id(item.id).quantity %></td>
+        <td><%= CartsHelper.total_price(item.id, item.price) %></td>
+        <!-- <td><%= item.quantity %></td> -->
+      </tr>
+    <% end %>
+    <tr>
+      <td colspan="3">Total</td>
+    </tr>
+  </table>
+</div>

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :items
+  resources :carts
 end
 
   # namespace :test do

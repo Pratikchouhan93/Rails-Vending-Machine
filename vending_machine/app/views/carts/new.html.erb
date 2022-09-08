@@ -1,0 +1,24 @@
+
+<%= form_with model: @cart do |form| %>
+  <div style="margin: 20px">
+    <div>
+      <%= form.label :code %><br>
+      <%= form.number_field :item_id %><br>
+      <% @cart.errors.full_messages_for(:item_id).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div><br>
+
+    <div>
+      <%= form.label :quantity %><br>
+      <%= form.number_field :quantity %><br>
+      <% @cart.errors.full_messages_for(:quantity).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div><br>
+
+    <div>
+      <%= form.submit "Add to cart" %>
+    </div>
+  </div>
+<% end %>

@@ -2,6 +2,7 @@
 
 class User < ApplicationRecord
   has_many :items, dependent: :destroy
+  has_many :cart, dependent: :destroy
   # enum :role, [ :admin, :customer ]
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
