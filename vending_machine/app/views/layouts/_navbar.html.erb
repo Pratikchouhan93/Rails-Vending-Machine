@@ -13,7 +13,7 @@
   </div>
 
   <% if root_path? %>
-    <%= link_to "Add i`tem", new_item_path(current_user) if current_user.admin? %>
+    <%= link_to "Add item", new_item_path(current_user) if current_user.admin? %>
     <div class="search-container">
       <form>
         <input class="searchbar" type="text" placeholder="Search" name="search">

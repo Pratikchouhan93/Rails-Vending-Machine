@@ -16,12 +16,13 @@
         <td><%= item.name %></td>
         <!-- <td><%= item.price %></td> -->
         <td><%= Cart.find_by_item_id(item.id).quantity %></td>
-        <td><%= CartsHelper.total_price(item.id, item.price) %></td>
+        <td><%= CartsHelper.price_by_qty(item.id, item.price) %></td>
         <!-- <td><%= item.quantity %></td> -->
       </tr>
     <% end %>
     <tr>
       <td colspan="3">Total</td>
+      <td><%= CartsHelper.total_price %></td>
     </tr>
   </table>
 </div>
