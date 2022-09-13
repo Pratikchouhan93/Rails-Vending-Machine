@@ -1,8 +1,7 @@
 class CartsController < ApplicationController
 
   def index
-    @item_arr = Cart.where(user_id: current_user.id)
-    @cart_items = Item.where(id: (@item_arr.map { |a| a.item_id }))
+   @carts = Cart.all
   end
 
   def show
@@ -15,7 +14,7 @@ class CartsController < ApplicationController
   
   def create
     @user = User.find(current_user.id)
-    @cart = @user.cart.create(cart_params)
+    @cart = @user.cart.new(cart_params)
 
     redirect_to root_path, notice: "Item added into cart Successfully."
   end
@@ -30,6 +29,6 @@ class CartsController < ApplicationController
   private
 
   def cart_params
-    params.require(:cart).permit(:item_id, :quantity)
+    params.require(:cart).permit(:quantity)
   end
 end

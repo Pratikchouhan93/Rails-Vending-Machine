@@ -81,4 +81,6 @@ end
 
   # debugger console
   gem 'byebug'
+  # ransack gem will help you easily add searching to your Rails application.
+  gem 'ransack'
   
