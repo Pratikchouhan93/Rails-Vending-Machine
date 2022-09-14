@@ -1,5 +1,9 @@
 #app/models/item.rb       Item Model
+require 'elasticsearch/model'
+
 class Item < ApplicationRecord
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
   belongs_to :user
   # self.locking_column = :name
 
