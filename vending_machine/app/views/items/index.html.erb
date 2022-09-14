@@ -15,6 +15,7 @@
       <th>Name</th>
       <th>Price</th>
       <th>Quantity</th>
+      <th>Status</th>
       <% if current_user.admin? %>
         <th>Edit</th>
         <th>Delete</th>
@@ -27,6 +28,7 @@
         <td><%= item.name %></td>
         <td><%= item.price %></td>
         <td><%= item.quantity %></td>
+        <td><%= button_to "Add to cart" %></td>
 
         <% if current_user.admin? %>
           <td><%= button_to (image_tag ("edit.png"), height: 20), edit_item_path(item), method: :get %></td>
