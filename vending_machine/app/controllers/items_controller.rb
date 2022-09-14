@@ -4,7 +4,11 @@ class ItemsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    @items = Item.order(price: :asc,quantity: :asc)
+    # @items = Item.order(price: :asc,quantity: :asc)      
+    # @q = Item.ransack(params[:q])
+    # @items = @q.result
+
+    @items = Item.search('name').records
   end
 
   def show
