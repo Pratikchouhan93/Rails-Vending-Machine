@@ -1,26 +1,30 @@
 <!-- index of carts -->
 
 <div>
-  <table>
-    <tr>
-      <th>Code</th>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Quantity</th>
-      <th>Total</th>
-    </tr>
-
-    <% @carts.each do |item| %>
+  <% unless @carts.empty? %>
+    <table>
       <tr>
-        <td><%= item.id %></td>
-        <td><%= item.name %></td>
-        <td><%= item.price %></td>
-        <td><%= item.quantity %></td>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
       </tr>
-    <% end %>
-<!--     <tr>
-      <td colspan="3">Total</td>
-      <td><#%= CartsHelper.total_price %></td>
-    </tr> -->
-  </table>
+
+      <% @carts.each do |item| %>
+        <tr>
+          <td><%= item.id %></td>
+          <td><%= item.name %></td>
+          <td><%= item.price %></td>
+          <td><%= item.quantity %></td>
+        </tr>
+      <% end %>
+  <!--     <tr>
+        <td colspan="3">Total</td>
+        <td><#%= CartsHelper.total_price %></td>
+      </tr> -->
+    </table>
+  <% else %>
+    <div style="margin: 10px">Your Cart is empty!!</div>
+  <% end %>
 </div>
