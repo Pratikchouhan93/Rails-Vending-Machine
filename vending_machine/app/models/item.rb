@@ -2,24 +2,17 @@
 require 'elasticsearch/model'
 
 class Item < ApplicationRecord
-  include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
-  belongs_to :user
-  # self.locking_column = :name
+  include Searchable 
 
+  belongs_to :user
+  #only name as a string field
   validates :name, :price, :quantity, presence: true
 
-  # after_initialize :normalize_name
-  # after_find :normalize_names
-  # after_touch :normalize_name
-
-  # private
-
-  # def normalize_name
-  #   puts "initialize"
-  # end
-
-  # def normalize_names
-  #   puts "find"
-  # end
+  settings index: { number_of_shards: 1 } do
+    mappings dynamic: 'false' do
+      indexes :name 
+      indexes :price 
+      indexes :quantity 
+    end
+  end
 end
