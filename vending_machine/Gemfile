@@ -86,6 +86,10 @@ end
   gem 'ransack'
   
   # for elasticsearch
-  gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails', branch: '5.x'
-  gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: '5.x'
+  gem 'elasticsearch-rails'
+  gem 'elasticsearch-model'
+
+  group :test do
+    gem 'elasticsearch-extensions'
+  end
 
