@@ -2,7 +2,9 @@
 require 'elasticsearch/model'
 
 class Item < ApplicationRecord
-  include Searchable 
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+  # include Searchable 
 
   belongs_to :user
   #only name as a string field
@@ -10,9 +12,9 @@ class Item < ApplicationRecord
 
   settings index: { number_of_shards: 1 } do
     mappings dynamic: 'false' do
-      indexes :name 
-      indexes :price 
-      indexes :quantity 
+      indexes :name
+      indexes :price
+      indexes :quantity
     end
   end
 end
